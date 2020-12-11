@@ -1,4 +1,4 @@
-# Flutter generic type problem
+# Dart generic type problem
 
 Showcase of error using generic type in function.
 It is needed to pass the type function further to make it working.
