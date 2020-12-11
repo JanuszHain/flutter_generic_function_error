@@ -1,4 +1,4 @@
-# flutter_generic_function_error
+# Flutter generic type problem
 
 Showcase of error using generic type in function.
 It is needed to pass the type function further to make it working.
