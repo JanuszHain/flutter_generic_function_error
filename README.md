@@ -6,6 +6,7 @@ There are no warnings, no errors during compilation, it is not so easy to spot.
 
 # Not working example:
 
+```
 class ManagementListNotWorking<T> extends StatefulWidget {
   final Widget Function(T item) someBuilder;
   final List<T> items;
@@ -32,9 +33,11 @@ class _ManagementListNotWorkingState extends State<ManagementListNotWorking> {
     );
   }
 }
+```
 
 # Working example:
 
+```
 class ManagementList<T> extends StatefulWidget {
   final Widget Function(T item) someBuilder;
   final List<T> items;
@@ -61,3 +64,4 @@ class _ManagementListState<T> extends State<ManagementList<T>> {
     );
   }
 }
+```
