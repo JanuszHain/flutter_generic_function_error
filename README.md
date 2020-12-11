@@ -4,6 +4,8 @@ Showcase of error using generic type in function.
 It is needed to pass the type function further to make it working.
 There are no warnings, no errors during compilation, it is not so easy to spot.
 
+You can use ```--no-implicit-dynamic``` in analyzer to spot such problems.
+
 # Not working example:
 
 ```
