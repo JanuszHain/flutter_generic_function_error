@@ -1,16 +1,63 @@
 # flutter_generic_function_error
 
-Showcase of error using generic type in function
+Showcase of error using generic type in function.
+It is needed to pass the type function further to make it working.
+There are no warnings, no errors during compilation, it is not so easy to spot.
 
-## Getting Started
+# Not working example:
 
-This project is a starting point for a Flutter application.
+class ManagementListNotWorking<T> extends StatefulWidget {
+  final Widget Function(T item) someBuilder;
+  final List<T> items;
 
-A few resources to get you started if this is your first Flutter project:
+  ManagementListNotWorking({
+    @required this.items,
+    @required this.someBuilder,
+  });
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+  @override
+  State<StatefulWidget> createState() => _ManagementListNotWorkingState();
+}
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+class _ManagementListNotWorkingState extends State<ManagementListNotWorking> {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.builder(
+        itemCount: widget.items.length,
+        itemBuilder: (context, index) {
+          return widget.someBuilder(widget.items.first);
+        },
+      ),
+    );
+  }
+}
+
+# Working example:
+
+class ManagementList<T> extends StatefulWidget {
+  final Widget Function(T item) someBuilder;
+  final List<T> items;
+
+  ManagementList({
+    @required this.items,
+    @required this.someBuilder,
+  });
+
+  @override
+  State<StatefulWidget> createState() => _ManagementListState<T>();
+}
+
+class _ManagementListState<T> extends State<ManagementList<T>> {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.builder(
+        itemCount: widget.items.length,
+        itemBuilder: (context, index) {
+          return widget.someBuilder(widget.items.first);
+        },
+      ),
+    );
+  }
+}
